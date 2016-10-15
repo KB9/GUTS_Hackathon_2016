@@ -46,13 +46,35 @@ JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onBrakeUp(JNIEnv* env, jobject objec
     brakeDown = false;
 }
 
+#define SPEED_INCREMENT 0.5f
+#define TWO_PI (3.141592654f * 2.0f)
+
 void processInput(Car* playerCar)
 {
 	if (!playerCar) return;
 	
 	if (acceleratorDown)
 	{
-		playerCar->move(0.05f);
+		playerCar->setRotation(playerCar->getRotation() + (TWO_PI / 180.0f));
+		if (playerCar->getRotation() > TWO_PI)
+		{
+			playerCar->setRotation(0.0f);
+		}
+		
+		playerCar->setSpeed(playerCar->getSpeed() + SPEED_INCREMENT);
+	}
+	else
+	{
+		playerCar->setSpeed(playerCar->getSpeed() - SPEED_INCREMENT);
+		if (playerCar->getSpeed() < 0)
+		{
+			playerCar->setSpeed(0);
+		}
+	}
+	
+	if (brakeDown)
+	{
+		playerCar->setSpeed(0);
 	}
 }
 
