@@ -13,14 +13,45 @@
 #define JNIFUNCTION_ACTIVITY(sig) Java_org_artoolkit_ar_samples_ARSimpleNativeCars_ARSimpleNativeCarsActivity_##sig
 
 extern "C" {
+	JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onSteerLeftDown(JNIEnv* env, jobject object));
+	JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onSteerLeftUp(JNIEnv* env, jobject object));
+	JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onSteerRightDown(JNIEnv* env, jobject object));
+	JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onSteerRightUp(JNIEnv* env, jobject object));
+	
     JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onAcceleratorDown(JNIEnv* env, jobject object));
     JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onAcceleratorUp(JNIEnv* env, jobject object));
     JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onBrakeDown(JNIEnv* env, jobject object));
     JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onBrakeUp(JNIEnv* env, jobject object));
 };
 
+bool steerLeftDown = false;
+bool steerRightDown = false;
 bool acceleratorDown = false;
 bool brakeDown = false;
+
+// Left pressed
+JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onSteerLeftDown(JNIEnv* env, jobject object))
+{
+	steerLeftDown = true;
+}
+
+// Left up
+JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onSteerLeftUp(JNIEnv* env, jobject object))
+{
+	steerLeftDown = false;
+}
+
+// Right pressed
+JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onSteerRightDown(JNIEnv* env, jobject object))
+{
+	steerRightDown = true;
+}
+
+// Right up
+JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onSteerRightUp(JNIEnv* env, jobject object))
+{
+	steerRightDown = false;
+}
 
 // Accelerator pressed
 JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onAcceleratorDown(JNIEnv* env, jobject object))
@@ -48,23 +79,20 @@ JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onBrakeUp(JNIEnv* env, jobject objec
 
 #define SPEED_INCREMENT 0.5f
 #define TWO_PI (3.141592654f * 2.0f)
+#define TURNING_ANGLE (TWO_PI / 72.0f)
 
 void processInput(Car* playerCar)
 {
 	if (!playerCar) return;
 	
 	if (acceleratorDown)
-	{
-		playerCar->setRotation(playerCar->getRotation() + (TWO_PI / 180.0f));
-		if (playerCar->getRotation() > TWO_PI)
-		{
-			playerCar->setRotation(0.0f);
-		}
-		
+	{	
+		// Increment speed
 		playerCar->setSpeed(playerCar->getSpeed() + SPEED_INCREMENT);
 	}
 	else
 	{
+		// Decrement speed
 		playerCar->setSpeed(playerCar->getSpeed() - SPEED_INCREMENT);
 		if (playerCar->getSpeed() < 0)
 		{
@@ -72,6 +100,31 @@ void processInput(Car* playerCar)
 		}
 	}
 	
+	// If the player is moving
+	if (playerCar->getSpeed() > 0.0f)
+	{
+		// If steering left
+		if (steerLeftDown)
+		{
+			playerCar->setRotation(playerCar->getRotation() - TURNING_ANGLE);
+			if (playerCar->getRotation() < 0.0f)
+			{
+				playerCar->setRotation(TWO_PI);
+			}
+		}
+		
+		// If steering right
+		if (steerRightDown)
+		{
+			playerCar->setRotation(playerCar->getRotation() + TURNING_ANGLE);
+			if (playerCar->getRotation() > TWO_PI)
+			{
+				playerCar->setRotation(0.0f);
+			}
+		}
+	}
+	
+	// Stop if brake is pressed
 	if (brakeDown)
 	{
 		playerCar->setSpeed(0);

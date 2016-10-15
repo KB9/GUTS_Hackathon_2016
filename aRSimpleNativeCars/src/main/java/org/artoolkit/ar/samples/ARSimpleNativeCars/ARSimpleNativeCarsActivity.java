@@ -71,6 +71,11 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
         System.loadLibrary("ARWrapperNativeCarsExample");
     }
 
+    public static native void onSteerLeftDown();
+    public static native void onSteerLeftUp();
+    public static native void onSteerRightDown();
+    public static native void onSteerRightUp();
+
     public static native void onAcceleratorDown();
     public static native void onAcceleratorUp();
     public static native void onBrakeDown();
@@ -83,6 +88,42 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main);
+
+        final ImageView left = (ImageView) findViewById(R.id.steer_left_image);
+        left.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        left.setColorFilter(Color.rgb(0, 255, 0));
+                        ARSimpleNativeCarsActivity.onSteerLeftDown();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        left.clearColorFilter();
+                        ARSimpleNativeCarsActivity.onSteerLeftUp();
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        final ImageView right = (ImageView) findViewById(R.id.steer_right_image);
+        right.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        right.setColorFilter(Color.rgb(0, 255, 0));
+                        ARSimpleNativeCarsActivity.onSteerRightDown();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        right.clearColorFilter();
+                        ARSimpleNativeCarsActivity.onSteerRightUp();
+                        return true;
+                }
+                return false;
+            }
+        });
 
         final ImageView brake = (ImageView) findViewById(R.id.brake_image);
         brake.setOnTouchListener(new View.OnTouchListener() {
