@@ -52,7 +52,10 @@
 #include <ARWrapper/ARToolKitWrapperExportedAPI.h>
 #include <unistd.h> // chdir()
 #include <android/log.h>
+
 #include "Car.h"
+#include "CarControls.h"
+
 #include <vector>
 
 // Utility preprocessor directive so only one change needed if Java class name changes
