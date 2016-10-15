@@ -50,9 +50,12 @@
 package org.artoolkit.ar.samples.ARSimpleNativeCars;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.artoolkit.ar.base.ARActivity;
@@ -61,6 +64,18 @@ import org.artoolkit.ar.base.rendering.ARRenderer;
 
 public class ARSimpleNativeCarsActivity extends ARActivity {
 
+    // Load the native libraries.
+    static {
+        System.loadLibrary("c++_shared");
+        System.loadLibrary("ARWrapper");
+        System.loadLibrary("ARWrapperNativeCarsExample");
+    }
+
+    public static native void onAcceleratorDown();
+    public static native void onAcceleratorUp();
+    public static native void onBrakeDown();
+    public static native void onBrakeUp();
+
     private SimpleNativeRenderer simpleNativeRenderer = new SimpleNativeRenderer();
 
     @Override
@@ -68,6 +83,42 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main);
+
+        final ImageView brake = (ImageView) findViewById(R.id.brake_image);
+        brake.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        brake.setColorFilter(Color.rgb(0, 255, 0));
+                        ARSimpleNativeCarsActivity.onBrakeDown();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        brake.clearColorFilter();
+                        ARSimpleNativeCarsActivity.onBrakeUp();
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        final ImageView accelerator = (ImageView) findViewById(R.id.accelerator_image);
+        accelerator.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        accelerator.setColorFilter(Color.rgb(0, 255, 0));
+                        ARSimpleNativeCarsActivity.onAcceleratorDown();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        accelerator.clearColorFilter();
+                        ARSimpleNativeCarsActivity.onAcceleratorUp();
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
     public void onStop() {
@@ -85,14 +136,6 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
     protected FrameLayout supplyFrameLayout() {
         return (FrameLayout) this.findViewById(R.id.mainLayout);
 
-    }
-
-    public void onAcceleratorPressed(View view) {
-        Toast.makeText(this, "Bruno is a cunt", Toast.LENGTH_LONG).show();
-    }
-
-    public void onBrakePressed(View view) {
-        Toast.makeText(this, "Davbo is a cunt", Toast.LENGTH_LONG).show();
     }
 
     public void onSettingsPressed(View view) {
