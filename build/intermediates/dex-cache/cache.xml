@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\KavanBickerstaff\AndroidStudioProjects\ARSimpleNativeCarsProj\aRSimpleNativeCars\build\intermediates\exploded-aar\ARSimpleNativeCarsProj\aRBaseLib\unspecified\jars\classes.jar"
+        jar="D:\ARToolKit5-bin-5.3.2-Android\AndroidStudioProjects\ARSimpleNativeCarsProj\aRSimpleNativeCars\build\intermediates\exploded-aar\ARSimpleNativeCarsProj\aRBaseLib\unspecified\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="44b025e216f91da596373dc8e6ade4a694e550b8">
-        <dex dex="C:\Users\KavanBickerstaff\AndroidStudioProjects\ARSimpleNativeCarsProj\aRSimpleNativeCars\build\intermediates\pre-dexed\debug\classes-cb118651dea58f1100e1b356d5d575e0c93d2189.jar" />
+        <dex dex="D:\ARToolKit5-bin-5.3.2-Android\AndroidStudioProjects\ARSimpleNativeCarsProj\aRSimpleNativeCars\build\intermediates\pre-dexed\debug\classes-d522a3ea90de11b34a997a1050790e4b302fb94d.jar" />
     </item>
 
 </items>
