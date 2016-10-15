@@ -55,11 +55,15 @@
 
 #include "Car.h"
 #include "CarControls.h"
+#include "World.h"
 
 #include <vector>
 
 // Utility preprocessor directive so only one change needed if Java class name changes
 #define JNIFUNCTION_DEMO(sig) Java_org_artoolkit_ar_samples_ARSimpleNativeCars_SimpleNativeRenderer_##sig
+
+
+static World world;
 
 extern "C" {
 JNIEXPORT void JNICALL
@@ -90,16 +94,12 @@ float lightAmbient[4] = {0.1f, 0.1f, 0.1f, 1.0f};
 float lightDiffuse[4] = {1.0f, 1.0f, 1.0f, 1.0f};
 float lightPosition[4] = {0.0f, 0.0f, 1.0f, 0.0f};
 
-static std::vector<Car*> cars;
 
 
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoInitialise(JNIEnv * env, jobject
                          object)) {
-	LOGE("LOGE start initialized");
-	cars.emplace_back(new Car("Data/models/Ferrari_Modena_Spider.obj", "single;Data/hiro.patt;80"));
-	cars.emplace_back(new Car("Data/models/Porsche_911_GT3.obj", "single;Data/kanji.patt;80"));
-	LOGE("LOGE end initialized");
+	world.init();
 }
 
 JNIEXPORT void JNICALL
@@ -111,12 +111,9 @@ JNIFUNCTION_DEMO(demoShutdown(JNIEnv * env, jobject
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoSurfaceCreated(JNIEnv * env, jobject
                          object)) {
-	glStateCacheFlush(); // Make sure we don't hold outdated OpenGL state.
+
 	LOGE("LOGE start Surface created");
-	for (auto *car : cars)
-	{
-		car->clearObj();
-	}
+
 	LOGE("LOGE end Surface created");
 	
 	
@@ -133,25 +130,6 @@ JNIFUNCTION_DEMO(demoSurfaceChanged(JNIEnv * env, jobject
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoDrawFrame(JNIEnv * env, jobject
                          obj)) {
-	LOGE("LOGE  start drawframe");
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glClear(GL_COLOR_BUFFER_BIT
-	| GL_DEPTH_BUFFER_BIT);
-	// Set the projection matrix to that provided by ARToolKit.
-	float proj[16];
-	arwGetProjectionMatrix(proj);
-	glMatrixMode(GL_PROJECTION);
-	glLoadMatrixf(proj);
-	glMatrixMode(GL_MODELVIEW);
-
-	glStateCacheEnableDepthTest();
-
-	glStateCacheEnableLighting();
-
-	glEnable(GL_LIGHT0);
-
-	for (auto* car : cars) {
-		car->render();
-	}
+	world.execute();
 	LOGE("LOGE  end drawframe");
 }
