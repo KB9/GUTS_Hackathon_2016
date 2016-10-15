@@ -63,7 +63,7 @@
 #define JNIFUNCTION_DEMO(sig) Java_org_artoolkit_ar_samples_ARSimpleNativeCars_SimpleNativeRenderer_##sig
 
 
-static World world;
+World *world;
 
 extern "C" {
 JNIEXPORT void JNICALL
@@ -88,24 +88,26 @@ JNIFUNCTION_DEMO(demoDrawFrame(JNIEnv * env, jobject
 
 
 #define NUM_MODELS 2
-static ARModel models[NUM_MODELS] = {0};
+// static ARModel models[NUM_MODELS] = {0};
 
-float lightAmbient[4] = {0.1f, 0.1f, 0.1f, 1.0f};
-float lightDiffuse[4] = {1.0f, 1.0f, 1.0f, 1.0f};
-float lightPosition[4] = {0.0f, 0.0f, 1.0f, 0.0f};
+// float lightAmbient[4] = {0.1f, 0.1f, 0.1f, 1.0f};
+// float lightDiffuse[4] = {1.0f, 1.0f, 1.0f, 1.0f};
+// float lightPosition[4] = {0.0f, 0.0f, 1.0f, 0.0f};
 
 
 
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoInitialise(JNIEnv * env, jobject
                          object)) {
-	world.init();
+	world = new World {"single;Data/kanji.patt;80"};
+	world->init();
 }
 
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoShutdown(JNIEnv * env, jobject
                          object)) {
 	LOGE("LOGE finished");
+	delete world;
 }
 
 JNIEXPORT void JNICALL
@@ -130,6 +132,6 @@ JNIFUNCTION_DEMO(demoSurfaceChanged(JNIEnv * env, jobject
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoDrawFrame(JNIEnv * env, jobject
                          obj)) {
-	world.execute();
+	world->execute();
 	LOGE("LOGE  end drawframe");
 }

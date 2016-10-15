@@ -1,22 +1,17 @@
+#pragma once
 
-#include <AR/gsub_es.h>
+// extern float lightAmbient[4];
+// extern float lightDiffuse[4];
+// extern float lightPosition[4];
 
-extern float lightAmbient[4];
-extern float lightDiffuse[4];
-extern float lightPosition[4];
+constexpr float lightAmbient[4] = {0.1f, 0.1f, 0.1f, 1.0f};
+constexpr float lightDiffuse[4] = {1.0f, 1.0f, 1.0f, 1.0f};
+constexpr float lightPosition[4] = {0.0f, 0.0f, 1.0f, 0.0f};
 
 struct Vector
 {
 	ARdouble x, y, z;
 };
-
-
-struct ARModel {
-    //
-    bool visible;
-    GLMmodel *obj;
-};
-
 
 class PatternRef
 {
@@ -24,12 +19,19 @@ public:
 	PatternRef (const char* pattern) 
 	{
 		patternID = arwAddMarker(pattern);
-		arwSetMarkerOptionBool(model.patternID, ARW_MARKER_OPTION_SQUARE_USE_CONT_POSE_ESTIMATION, false);
-		arwSetMarkerOptionBool(model.patternID, ARW_MARKER_OPTION_FILTERED, true);
+		arwSetMarkerOptionBool(patternID, ARW_MARKER_OPTION_SQUARE_USE_CONT_POSE_ESTIMATION, false);
+		arwSetMarkerOptionBool(patternID, ARW_MARKER_OPTION_FILTERED, true);
 	}
 	
-	operator int() const { return patternID;}
-	operator ARdouble* () { return transformationMatrix; }
+	int getID()
+	{
+		return patternID;
+	}
+	
+	ARdouble* getTransformationMatrix()
+	{
+		return transformationMatrix;
+	}
 private:
 	int patternID;
 	ARdouble transformationMatrix[16];
@@ -50,8 +52,6 @@ public:
 	// "single;Data/kanji.patt;80"
 	Model(const char* modelPath, float scalingFactor = 0.035f) 
 	{
-		LOGE("initialized Car");
-
 		model = glmReadOBJ2(modelPath, 0, 0); // context 0, don't read textures yet.
 		
 		if (!(model)) {
@@ -62,7 +62,7 @@ public:
 		glmScale(model, scalingFactor);
 		
 		glmCreateArrays(model, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
-		visible = false;
+		visible = true;
 	}
 	
 	~Model()
@@ -80,20 +80,14 @@ public:
 		}
 	}
 	
-	bool visible() const
-	{
-		return visible;
-	}
-	
 	void setVisible(bool v)
 	{
 		visible = v;
 	}
 	
-	virtual void render(double* worldOriginMatrix) = 0;
-
+	virtual void render(ARdouble* worldOriginMatrix) = 0;
 	
-	GLModel *model;
+	GLMmodel *model;
 	bool visible;
 };
 
@@ -105,18 +99,14 @@ public:
 		velocity = vel;
 	}
 	
-	void update() override
-	{
-		
-	}
-	void render(double* wordOriginMatrix) override
+	void render(ARdouble* worldOriginMatrix) override
 	{
 		//setVisible(arwQueryMarkerTransformation(model.patternID, model.transformationMatrix));
 		if (visible) {
 			//glLoadMatrixf(model.transformationMatrix);
 			glLoadMatrixf(worldOriginMatrix);
 			//glTranslatef(0.0,20.0,25.0);
-			glTranslatef(offset_x, offset_y, offset_z);
+			//glTranslatef(offset_x, offset_y, offset_z);
 
 			glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient
 			);
@@ -134,7 +124,18 @@ public:
 			LOGE("LOGE draw end");
 		}
 	}
+	
+	int score()
+	{
+		return scoreCounter;
+	}
+	
+	void scored()
+	{
+		scoreCounter++;
+	}
 private:
 	
+	int scoreCounter;
 	Vector velocity;
 };

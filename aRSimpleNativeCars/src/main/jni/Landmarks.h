@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Car.h"
 #include <cmath>
 
@@ -6,25 +8,25 @@ class Landmark : public Model
 public:
 	
 	Landmark(int order_index) :
-		pattern(LANDMARK_PATTERN_PATHS[order_index])
-	{
-		Model::Model(LANDMARK_MODEL_PATH);
-		
+		Model(LANDMARK_MODEL_PATH)//,
+		//pattern(LANDMARK_PATTERN_PATHS[order_index])
+	{	
 		this->order_index = order_index;
 	}
 	
 	bool checkCollisions(const Car& car)
 	{	
-		float dst = sqrt(pow(car.x - x, 2) + pow(car.y - y, 2) + pow(car.z - z, 2));
-		return dst < DISTANCE_THRESHOLD;
+		// float dst = sqrt(pow(car.offx - x, 2) + pow(car.y - y, 2) + pow(car.z - z, 2));
+		// return dst < DISTANCE_THRESHOLD;
+		return false;
 	}
 	
-	void render(double* originMatrix)
+	void render(ARdouble* originMatrix)
 	{
 		if (visible)
 		{
-			glLoadMatrix(originMatrix);
-			glTranslatef(x, y, z);
+			glLoadMatrixf(originMatrix);
+			// glTranslatef(offset_x, offset_y, offset_z);
 			
 			glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient
 			);
@@ -49,15 +51,15 @@ public:
 	}
 	
 private:
-	const char* LANDMARK_MODEL_PATH = "path_to_landmark_model";
-	const char* LANDMARK_PATTERN_PATHS[] = {
-		"landmark_pattern_1", "landmark_pattern_2", "landmark_pattern_3",
-		"landmark_pattern_4", "landmark_pattern_5", "landmark_pattern_6"
-	};
+	static constexpr char LANDMARK_MODEL_PATH[] = "Data/models/Porsche_911_GT3.obj";
+	// static constexpr char LANDMARK_PATTERN_PATHS[][] = {
+		// "single;Data/a.patt;80", "single;Data/b.patt;80", "single;Data/c.patt;80",
+		// "single;Data/d.patt;80", "single;Data/f.patt;80", "single;Data/g.patt;80"
+	// };
 	
-	constexpr float DISTANCE_THRESHOLD = 0.5f;
+	static constexpr float DISTANCE_THRESHOLD = 0.5f;
 
-	PatternRef pattern;
+	//PatternRef pattern;
 	
 	int order_index;
-}
+};
