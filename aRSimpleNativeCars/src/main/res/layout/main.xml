@@ -22,16 +22,16 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/brake_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/brake"
-            android:onClick="onBrakePressed" />
+            android:src="@drawable/brake" />
 
         <ImageView
+            android:id="@+id/accelerator_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/accelerator"
-            android:onClick="onAcceleratorPressed" />
+            android:src="@drawable/accelerator" />
 
     </LinearLayout>
 
