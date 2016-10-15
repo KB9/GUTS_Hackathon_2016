@@ -106,21 +106,31 @@ void processInput(Car* playerCar)
 		// If steering left
 		if (steerLeftDown)
 		{
-			playerCar->setRotation(playerCar->getRotation() - TURNING_ANGLE);
-			if (playerCar->getRotation() < 0.0f)
-			{
-				playerCar->setRotation(TWO_PI);
-			}
-		}
-		
-		// If steering right
-		if (steerRightDown)
-		{
 			playerCar->setRotation(playerCar->getRotation() + TURNING_ANGLE);
 			if (playerCar->getRotation() > TWO_PI)
 			{
 				playerCar->setRotation(0.0f);
 			}
+			// playerCar->setRotation(playerCar->getRotation() - TURNING_ANGLE);
+			// if (playerCar->getRotation() < 0.0f)
+			// {
+				// playerCar->setRotation(TWO_PI);
+			// }
+		}
+		
+		// If steering right
+		if (steerRightDown)
+		{
+			playerCar->setRotation(playerCar->getRotation() - TURNING_ANGLE);
+			if (playerCar->getRotation() < 0.0f)
+			{
+				playerCar->setRotation(TWO_PI);
+			}
+			// playerCar->setRotation(playerCar->getRotation() + TURNING_ANGLE);
+			// if (playerCar->getRotation() > TWO_PI)
+			// {
+				// playerCar->setRotation(0.0f);
+			// }
 		}
 	}
 	
