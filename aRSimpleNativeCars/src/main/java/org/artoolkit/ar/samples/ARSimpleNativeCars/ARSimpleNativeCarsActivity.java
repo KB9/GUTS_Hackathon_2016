@@ -49,10 +49,14 @@
 
 package org.artoolkit.ar.samples.ARSimpleNativeCars;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import org.artoolkit.ar.base.ARActivity;
+import org.artoolkit.ar.base.camera.CameraPreferencesActivity;
 import org.artoolkit.ar.base.rendering.ARRenderer;
 
 public class ARSimpleNativeCarsActivity extends ARActivity {
@@ -81,5 +85,18 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
     protected FrameLayout supplyFrameLayout() {
         return (FrameLayout) this.findViewById(R.id.mainLayout);
 
+    }
+
+    public void onAcceleratorPressed(View view) {
+        Toast.makeText(this, "Bruno is a cunt", Toast.LENGTH_LONG).show();
+    }
+
+    public void onBrakePressed(View view) {
+        Toast.makeText(this, "Davbo is a cunt", Toast.LENGTH_LONG).show();
+    }
+
+    public void onSettingsPressed(View view) {
+        Intent intent = new Intent(this, CameraPreferencesActivity.class);
+        startActivity(intent);
     }
 }
