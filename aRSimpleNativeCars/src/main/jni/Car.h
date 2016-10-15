@@ -41,7 +41,7 @@ private:
 class Model
 {
 public:
-	float offset_x, offset_y, offset_z;
+	float offset_x = 0, offset_y = 0, offset_z = 0;
 
 	// @param model the full path to the obj file : 
 	// "Data/models/Ferrari_Modena_Spider.obj";
@@ -125,9 +125,10 @@ public:
 	
 	void update()
 	{
-		offset_y += translation;
+		offset_x += translation;
 		offset_z += translation;
 		translation = 0;
+		LOGE("offsets are : %f, %f", offset_x, offset_z);
 	}
 	
 	int score()
@@ -147,6 +148,7 @@ public:
 	
 	void move(float tr)
 	{
+		LOGE("called move");
 		translation += tr;
 	}
 	

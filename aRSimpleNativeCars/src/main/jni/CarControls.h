@@ -52,7 +52,7 @@ void processInput(Car* playerCar)
 	
 	if (acceleratorDown)
 	{
-		playerCar->offset_x += 0.05f;
+		playerCar->move(0.05f);
 	}
 }
 
