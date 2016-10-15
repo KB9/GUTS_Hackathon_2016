@@ -86,9 +86,9 @@ JNIFUNCTION_DEMO(demoDrawFrame(JNIEnv * env, jobject
 #define NUM_MODELS 2
 static ARModel models[NUM_MODELS] = {0};
 
-static float lightAmbient[4] = {0.1f, 0.1f, 0.1f, 1.0f};
-static float lightDiffuse[4] = {1.0f, 1.0f, 1.0f, 1.0f};
-static float lightPosition[4] = {0.0f, 0.0f, 1.0f, 0.0f};
+float lightAmbient[4] = {0.1f, 0.1f, 0.1f, 1.0f};
+float lightDiffuse[4] = {1.0f, 1.0f, 1.0f, 1.0f};
+float lightPosition[4] = {0.0f, 0.0f, 1.0f, 0.0f};
 
 static std::vector<Car*> cars;
 
@@ -99,7 +99,6 @@ JNIFUNCTION_DEMO(demoInitialise(JNIEnv * env, jobject
 	LOGE("LOGE start initialized");
 	cars.emplace_back(new Car("Data/models/Ferrari_Modena_Spider.obj", "single;Data/hiro.patt;80"));
 	cars.emplace_back(new Car("Data/models/Porsche_911_GT3.obj", "single;Data/kanji.patt;80"));
-	cars.emplace_back(new Car("Data/models/Ferrari_Modena_Spider.obj", "single;Data/kanji.patt;80"));
 	LOGE("LOGE end initialized");
 }
 
@@ -152,25 +151,7 @@ JNIFUNCTION_DEMO(demoDrawFrame(JNIEnv * env, jobject
 	glEnable(GL_LIGHT0);
 
 	for (auto* car : cars) {
-		car->setVisible(arwQueryMarkerTransformation(car->model.patternID, car->model.transformationMatrix));
-		LOGE("LOGE  loop drawframe, visible %d", car->visible());
-		if (car->visible()) {
-			glLoadMatrixf(car->model.transformationMatrix);
-
-			glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient
-			);
-			glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse
-			);
-			glLightfv(GL_LIGHT0, GL_POSITION, lightPosition
-			);
-			LOGE("LOGE draw start");
-			if (car->model.obj == nullptr) {
-				LOGE("the model is empty");
-				continue;
-			}
-			glmDrawArrays(car->model.obj, 0);
-			LOGE("LOGE draw end");
-		}
+		car->render();
 	}
 	LOGE("LOGE  end drawframe");
 }
