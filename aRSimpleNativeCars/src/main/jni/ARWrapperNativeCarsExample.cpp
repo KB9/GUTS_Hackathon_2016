@@ -63,7 +63,7 @@
 #define JNIFUNCTION_DEMO(sig) Java_org_artoolkit_ar_samples_ARSimpleNativeCars_SimpleNativeRenderer_##sig
 
 
-World *world;
+World *world = nullptr;
 
 extern "C" {
 JNIEXPORT void JNICALL
@@ -132,6 +132,7 @@ JNIFUNCTION_DEMO(demoSurfaceChanged(JNIEnv * env, jobject
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoDrawFrame(JNIEnv * env, jobject
                          obj)) {
+	processInput(world->getPlayerCar());
 	world->execute();
 	LOGE("LOGE  end drawframe");
 }
