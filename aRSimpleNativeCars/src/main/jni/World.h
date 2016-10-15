@@ -86,6 +86,11 @@ public:
 	{
 		return true;
 	}
+	
+	Car* getPlayerCar()
+	{
+		return cars[0];
+	}
 private:
 	PatternRef pattern;
 	float lightAmbient[4] = {0.1f, 0.1f, 0.1f, 1.0f};
