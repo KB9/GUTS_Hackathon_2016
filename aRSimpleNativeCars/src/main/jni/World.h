@@ -55,6 +55,9 @@ public:
 		// check for collisions
 		for (Car* car : cars)
 		{
+			//DOES NOT BELONG HERE
+			car->update();
+			//END
 			int score = car->score();
 			if (checkCollision(landmarks[score], car))
 			{
@@ -63,28 +66,6 @@ public:
 		}
 		
 		//render everything
-		
-		
-		// LOGE("LOGE  start drawframe");
-		
-		// glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		// glClear(GL_COLOR_BUFFER_BIT
-		// | GL_DEPTH_BUFFER_BIT);
-		// // Set the projection matrix to that provided by ARToolKit.
-		// float proj[16];
-		// arwGetProjectionMatrix(proj);
-		// glMatrixMode(GL_PROJECTION);
-		// glLoadMatrixf(proj);
-		// glMatrixMode(GL_MODELVIEW);
-
-		// glStateCacheEnableDepthTest();
-
-		// glStateCacheEnableLighting();
-
-		// glEnable(GL_LIGHT0);
-		// LOGE("pattern ID: %d", pattern.getID());
-		// bool visible = arwQueryMarkerTransformation(pattern.getID(), pattern.getTransformationMatrix());
-		// LOGE("visible : %d", visible);
 		
 		for (auto* car : cars) {
 			car->render(pattern.getTransformationMatrix());

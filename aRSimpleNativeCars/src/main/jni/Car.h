@@ -58,9 +58,7 @@ public:
 			LOGE("Error loading model from file '%s'.", modelPath);
 			exit(-1);
 		}
-		
 		glmScale(model, scalingFactor);
-		
 		glmCreateArrays(model, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
 		visible = true;
 	}
@@ -69,7 +67,6 @@ public:
 	{
 		clearObj();
 	}
-	
 	
 	void clearObj()
 	{
@@ -87,6 +84,7 @@ public:
 	
 	virtual void render(ARdouble* worldOriginMatrix) = 0;
 	
+protected:
 	GLMmodel *model;
 	bool visible;
 };
@@ -106,7 +104,7 @@ public:
 			//glLoadMatrixf(model.transformationMatrix);
 			glLoadMatrixf(worldOriginMatrix);
 			//glTranslatef(0.0,20.0,25.0);
-			//glTranslatef(offset_x, offset_y, offset_z);
+			glTranslatef(offset_x, offset_y, offset_z);
 
 			glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient
 			);
@@ -125,6 +123,13 @@ public:
 		}
 	}
 	
+	void update()
+	{
+		offset_y += translation;
+		offset_z += translation;
+		translation = 0;
+	}
+	
 	int score()
 	{
 		return scoreCounter;
@@ -134,8 +139,22 @@ public:
 	{
 		scoreCounter++;
 	}
+	
+	void rotate(float rot)
+	{
+		rotation = rot;
+	}
+	
+	void move(float tr)
+	{
+		translation += tr;
+	}
+	
 private:
 	
 	int scoreCounter;
+	
+	float rotation;
+	float translation;
 	Vector velocity;
 };
