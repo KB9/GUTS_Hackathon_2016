@@ -83,6 +83,8 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
 
     private SimpleNativeRenderer simpleNativeRenderer = new SimpleNativeRenderer();
 
+    private static final float TRANSPARENCY = 0.5f;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,16 +92,17 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
         setContentView(R.layout.main);
 
         final ImageView left = (ImageView) findViewById(R.id.steer_left_image);
+        left.setAlpha(TRANSPARENCY);
         left.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        left.setColorFilter(Color.rgb(0, 255, 0));
+                        left.setAlpha(1.0f);
                         ARSimpleNativeCarsActivity.onSteerLeftDown();
                         return true;
                     case MotionEvent.ACTION_UP:
-                        left.clearColorFilter();
+                        left.setAlpha(TRANSPARENCY);
                         ARSimpleNativeCarsActivity.onSteerLeftUp();
                         return true;
                 }
@@ -108,16 +111,17 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
         });
 
         final ImageView right = (ImageView) findViewById(R.id.steer_right_image);
+        right.setAlpha(TRANSPARENCY);
         right.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        right.setColorFilter(Color.rgb(0, 255, 0));
+                        right.setAlpha(1.0f);
                         ARSimpleNativeCarsActivity.onSteerRightDown();
                         return true;
                     case MotionEvent.ACTION_UP:
-                        right.clearColorFilter();
+                        right.setAlpha(TRANSPARENCY);
                         ARSimpleNativeCarsActivity.onSteerRightUp();
                         return true;
                 }
@@ -126,16 +130,17 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
         });
 
         final ImageView brake = (ImageView) findViewById(R.id.brake_image);
+        brake.setAlpha(TRANSPARENCY);
         brake.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        brake.setColorFilter(Color.rgb(0, 255, 0));
+                        brake.setAlpha(1.0f);
                         ARSimpleNativeCarsActivity.onBrakeDown();
                         return true;
                     case MotionEvent.ACTION_UP:
-                        brake.clearColorFilter();
+                        brake.setAlpha(TRANSPARENCY);
                         ARSimpleNativeCarsActivity.onBrakeUp();
                         return true;
                 }
@@ -144,16 +149,17 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
         });
 
         final ImageView accelerator = (ImageView) findViewById(R.id.accelerator_image);
+        accelerator.setAlpha(TRANSPARENCY);
         accelerator.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        accelerator.setColorFilter(Color.rgb(0, 255, 0));
+                        accelerator.setAlpha(1.0f);
                         ARSimpleNativeCarsActivity.onAcceleratorDown();
                         return true;
                     case MotionEvent.ACTION_UP:
-                        accelerator.clearColorFilter();
+                        accelerator.setAlpha(TRANSPARENCY);
                         ARSimpleNativeCarsActivity.onAcceleratorUp();
                         return true;
                 }
