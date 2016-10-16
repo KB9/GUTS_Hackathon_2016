@@ -1,2 +1,5 @@
 /**/*.so
 /**/*.class
+*.so
+*.class
+*.xml
