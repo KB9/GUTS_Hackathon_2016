@@ -55,8 +55,8 @@ public:
 		
 		float* matrix = pattern.getTransformationMatrix();
 		float marker_x = matrix[3];
-		float marker_y = matrix[6];
-		float marker_z = matrix[9];
+		float marker_y = matrix[7];
+		float marker_z = matrix[11];
 		
 		static constexpr int wtf = 1;
 		offset_x = (x - marker_x) * wtf;
