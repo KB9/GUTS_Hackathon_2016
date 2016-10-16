@@ -108,6 +108,7 @@ public:
 		
 		if (checkForVictory())
 		{
+			won = true;
 			LOGE("IMA CALL MY JAVA SISTAH");
 		}
 		
@@ -178,14 +179,14 @@ public:
 		}
 	}
 	
-	bool checkCollision(Landmark* landmark, Car* car)
-	{
-		return true;
-	}
 	
 	Car* getPlayerCar()
 	{
 		return cars[0];
+	}
+	
+	bool gameWon() const{
+		return won;
 	}
 private:
 	PatternRef pattern;
@@ -195,6 +196,8 @@ private:
 	std::vector<Car*> cars;
 	std::vector<Landmark*> landmarks;
 	GameMode mode;
+	
+	bool won = false;
 };
 
 
