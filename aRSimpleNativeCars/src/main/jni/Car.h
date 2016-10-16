@@ -30,7 +30,7 @@ public:
 		patternID = arwAddMarker(pattern);
 		if (patternID == -1)
 		{
-			LOGE("the pattern is WRONG!!");
+			LOGE("the pattern  %s is WRONG!!", pattern );
 			exit(-1);
 		}
 		arwSetMarkerOptionBool(patternID, ARW_MARKER_OPTION_SQUARE_USE_CONT_POSE_ESTIMATION, false);

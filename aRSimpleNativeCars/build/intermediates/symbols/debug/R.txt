@@ -17,6 +17,7 @@ int id steer_right_image 0x7f080005
 int id timer_text 0x7f080006
 int id topLayout 0x7f080000
 int layout main 0x7f030000
+int layout start 0x7f030001
 int menu options 0x7f070000
 int string app_name 0x7f060000
 int string hello 0x7f060001

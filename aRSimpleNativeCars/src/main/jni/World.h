@@ -27,7 +27,7 @@ public:
 	void init(GameMode mode)
 	{
 		this->mode = mode;
-		clearCars();
+		//clearCars();
 		
 		cars.clear();
 		landmarks.clear();

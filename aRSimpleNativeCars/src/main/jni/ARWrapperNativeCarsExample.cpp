@@ -63,6 +63,9 @@
 #define JNIFUNCTION_DEMO(sig) Java_org_artoolkit_ar_samples_ARSimpleNativeCars_SimpleNativeRenderer_##sig
 
 
+World *world = nullptr;
+
+
 extern "C" {
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoInitialise(JNIEnv * env, jobject
@@ -100,7 +103,8 @@ JNIFUNCTION_DEMO(demoInitialise(JNIEnv * env, jobject
 	if (!world)
 		world = new World {"single;Data/d.patt;40"};
 	
-	world->init(SINGLE_CAPTURE);
+	LOGE(" I was just kidding %d", gmode);
+	world->init(gmode);
 }
 
 JNIEXPORT void JNICALL
