@@ -15,11 +15,20 @@ public:
 		this->order_index = order_index;
 	}
 	
-	bool checkCollisions(const Car& car)
-	{	
-		// float dst = sqrt(pow(car.offx - x, 2) + pow(car.y - y, 2) + pow(car.z - z, 2));
-		// return dst < DISTANCE_THRESHOLD;
-		return false;
+	bool handleCollision(Car* car)
+	{
+		float dstX = std::abs(car->offset_x - offset_x);
+		float dstY = std::abs(car->offset_y - offset_y);
+		float dstZ = std::abs(car->offset_z - offset_z);
+		
+		bool hasHitCheckpoint = dstX <= DISTANCE_THRESHOLD && dstY <= DISTANCE_THRESHOLD && dstZ <= DISTANCE_THRESHOLD;
+		if (hasHitCheckpoint)
+		{
+			car->scored();
+			visible = false;
+		}
+		
+		return hasHitCheckpoint;
 	}
 	
 	void render(ARdouble* originMatrix)
@@ -85,7 +94,7 @@ public:
 	
 private:
 	
-	static constexpr float DISTANCE_THRESHOLD = 0.5f;
+	static constexpr float DISTANCE_THRESHOLD = 50.0f;
 
 	PatternRef pattern;
 	
