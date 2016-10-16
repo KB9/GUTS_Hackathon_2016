@@ -22,6 +22,9 @@ extern "C" {
     JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onAcceleratorUp(JNIEnv* env, jobject object));
     JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onBrakeDown(JNIEnv* env, jobject object));
     JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onBrakeUp(JNIEnv* env, jobject object));
+	
+	JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCheckpoints(JNIEnv* env, jobject object));
+	JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCTF(JNIEnv* env, jobject object));
 };
 
 bool steerLeftDown = false;
@@ -75,6 +78,18 @@ JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onBrakeDown(JNIEnv* env, jobject obj
 JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onBrakeUp(JNIEnv* env, jobject object))
 {
     brakeDown = false;
+}
+
+// Initialize checkpoints mode
+JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCheckpoints(JNIEnv* env, jobject object))
+{
+	// Bruno start typing here you porco dio puttana troia farfalla
+}
+
+// Initialize CTF mode
+JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCTF(JNIEnv* env, jobject object))
+{
+	// Bruno please see above at your earliest convenience
 }
 
 #define SPEED_INCREMENT 0.5f

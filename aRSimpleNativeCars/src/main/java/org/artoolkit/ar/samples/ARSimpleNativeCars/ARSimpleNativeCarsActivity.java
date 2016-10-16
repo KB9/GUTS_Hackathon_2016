@@ -83,6 +83,9 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
     public static native void onBrakeDown();
     public static native void onBrakeUp();
 
+    public static native void initCheckpoints();
+    public static native void initCTF();
+
     private SimpleNativeRenderer simpleNativeRenderer = new SimpleNativeRenderer();
 
     private Timer timer = new Timer();
@@ -105,6 +108,10 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras.get("GAME_MODE") == 0) ARSimpleNativeCarsActivity.initCheckpoints();
+        else if (extras.get("GAME_MODE") == 1) ARSimpleNativeCarsActivity.initCTF();
 
         timer.start();
         runnable.run();

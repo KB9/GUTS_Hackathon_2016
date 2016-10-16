@@ -15,11 +15,13 @@ public class StartActivity extends Activity {
 
     public void startCTF(View view) {
         Intent intent = new Intent(this, ARSimpleNativeCarsActivity.class);
+        intent.putExtra("GAME_MODE", 1);
         startActivity(intent);
     }
 
     public void startCheckpoints(View view) {
         Intent intent = new Intent(this, ARSimpleNativeCarsActivity.class);
+        intent.putExtra("GAME_MODE", 0);
         startActivity(intent);
     }
 }
