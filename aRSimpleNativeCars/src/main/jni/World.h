@@ -21,6 +21,10 @@
 
 class World{
 public:
+	enum GameType
+	{
+		
+	};
 	World(const char* pat):
 		pattern(pat){}
 	void init()
@@ -73,9 +77,8 @@ public:
 			car->update();
 			//END
 			int score = car->score();
-			if (checkCollision(landmarks[score], car))
+			if (handleCollision(landmarks[score]->checkCollision(car))
 			{
-				car->scored();
 			}
 		}
 		
