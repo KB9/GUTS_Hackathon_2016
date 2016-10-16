@@ -53,6 +53,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -86,6 +87,8 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
     public static native void initCheckpoints();
     public static native void initCTF();
 
+    public static native boolean hasWon();
+
     private SimpleNativeRenderer simpleNativeRenderer = new SimpleNativeRenderer();
 
     private Timer timer = new Timer();
@@ -98,6 +101,10 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
         public void run() {
             TextView timerText = (TextView) findViewById(R.id.timer_text);
             timerText.setText(timer.toString());
+
+            if (ARSimpleNativeCarsActivity.hasWon()) {
+                Log.i("WINNER", "winner winner chicken dinner");
+            }
 
             handler.postDelayed(this, 1000);
         }
