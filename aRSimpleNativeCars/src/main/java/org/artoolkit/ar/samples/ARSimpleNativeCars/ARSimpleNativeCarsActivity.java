@@ -52,10 +52,12 @@ package org.artoolkit.ar.samples.ARSimpleNativeCars;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.artoolkit.ar.base.ARActivity;
@@ -83,13 +85,29 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
 
     private SimpleNativeRenderer simpleNativeRenderer = new SimpleNativeRenderer();
 
+    private Timer timer = new Timer();
+
     private static final float TRANSPARENCY = 0.5f;
+
+    private Handler handler = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            TextView timerText = (TextView) findViewById(R.id.timer_text);
+            timerText.setText(timer.toString());
+
+            handler.postDelayed(this, 1000);
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main);
+
+        timer.start();
+        runnable.run();
 
         final ImageView left = (ImageView) findViewById(R.id.steer_left_image);
         left.setAlpha(TRANSPARENCY);
