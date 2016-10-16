@@ -6,19 +6,25 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="LOGE" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="offset" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e92aa905-472d-46eb-aafb-7be5ce19db2f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/pre-dexed/debug/classes-cb118651dea58f1100e1b356d5d575e0c93d2189.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.5/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.5/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.5/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.5/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.5/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.5/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.5/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.5/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.5/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.5/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/androidTest/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/test/BuildConfig.class" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/androidTest/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/test/BuildConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/resources-debug-androidTest.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/base/R$id.class" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/base/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/ARSimpleNativeCarsActivity.class" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/ARSimpleNativeCarsActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$drawable.class" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$drawable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$id.class" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$layout.class" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$layout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$menu.class" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$menu.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$string.class" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$xml.class" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R$xml.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R.class" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/classes/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/dex/debug/classes.dex" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/dex/debug/classes.dex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/outputs/apk/aRSimpleNativeCars-debug-unaligned.apk" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/outputs/apk/aRSimpleNativeCars-debug-unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/outputs/apk/aRSimpleNativeCars-debug.apk" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/outputs/apk/aRSimpleNativeCars-debug.apk" />
@@ -34,35 +40,21 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/mips/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/mips/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/x86/libARWrapperNativeCarsExample.so" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/x86/libARWrapperNativeCarsExample.so" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/x86/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/x86/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/aRBaseLib_unspecified.xml" afterPath="$PROJECT_DIR$/.idea/libraries/aRBaseLib_unspecified.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/generated/source/buildConfig/androidTest/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/test/BuildConfig.java" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/generated/source/buildConfig/androidTest/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/test/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/generated/source/buildConfig/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/BuildConfig.java" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/generated/source/buildConfig/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/aRSimpleNativeCars.iml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/aRSimpleNativeCars.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/generated/source/r/debug/org/artoolkit/ar/base/R.java" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/generated/source/r/debug/org/artoolkit/ar/base/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/AndroidManifest.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/R.txt" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/R.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/aapt/AndroidManifest.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/aapt/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/res/menu/options.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/res/menu/options.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/res/values/values.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/res/values/values.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/res/xml/preferences.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/exploded-aar/ARSimpleNativeCarsProj/aRBaseLib/unspecified/res/xml/preferences.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/incremental/mergeAssets/androidTest/debug/merger.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/incremental/mergeAssets/androidTest/debug/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/generated/source/r/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R.java" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/generated/source/r/debug/org/artoolkit/ar/samples/ARSimpleNativeCars/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/incremental/mergeAssets/debug/merger.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/incremental/mergeAssets/debug/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/incremental/mergeResourcesandroidTest/debug/merger.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/incremental/mergeResourcesandroidTest/debug/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/incremental/mergeResourcesdebug/merger.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/incremental/mergeResourcesdebug/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/merged/debug/layout/main.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/merged/debug/layout/main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/merged/debug/menu/options.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/merged/debug/menu/options.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/merged/debug/values/values.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/merged/debug/xml/preferences.xml" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/res/merged/debug/xml/preferences.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/jni/ARWrapperNativeCarsExample.cpp" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/jni/ARWrapperNativeCarsExample.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/symbols/debug/R.txt" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/build/intermediates/symbols/debug/R.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/armeabi-v7a/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o.d" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/armeabi-v7a/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o.d" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/armeabi/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o.d" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/armeabi/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o.d" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/mips/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o.d" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/mips/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o.d" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/x86/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o.d" afterPath="$PROJECT_DIR$/aRSimpleNativeCars/src/main/obj/local/x86/objs/ARWrapperNativeCarsExample/ARWrapperNativeCarsExample.o.d" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
     <ignored path="ARSimpleNativeCarsProj.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,9 +78,20 @@
       <file leaf-file-name="ARSimpleNativeCarsActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aRSimpleNativeCars/src/main/java/org/artoolkit/ar/samples/ARSimpleNativeCars/ARSimpleNativeCarsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7295082">
-              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.6502732">
+              <caret line="135" column="36" selection-start-line="135" selection-start-column="36" selection-end-line="135" selection-end-column="36" />
+              <folding>
+                <element signature="e#4049#4706#0" expanded="true" />
+                <element signature="e#4705#4706#0" expanded="true" />
+                <element signature="e#4825#5486#0" expanded="true" />
+                <element signature="e#5485#5486#0" expanded="true" />
+                <element signature="e#5599#6250#0" expanded="true" />
+                <element signature="e#6249#6250#0" expanded="true" />
+                <element signature="e#6381#7056#0" expanded="true" />
+                <element signature="e#7055#7056#0" expanded="true" />
+                <element signature="e#7226#7227#0" expanded="true" />
+                <element signature="e#7269#7270#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1534,15 +1537,15 @@
       <list>
         <option value="$PROJECT_DIR$/aRSimpleNativeCars/build.gradle" />
         <option value="$PROJECT_DIR$/aRSimpleNativeCars/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/aRSimpleNativeCars/src/main/java/org/artoolkit/ar/samples/ARSimpleNativeCars/ARSimpleNativeCarsActivity.java" />
         <option value="$PROJECT_DIR$/aRSimpleNativeCars/src/main/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/aRSimpleNativeCars/src/main/java/org/artoolkit/ar/samples/ARSimpleNativeCars/ARSimpleNativeCarsActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1370" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -1570,8 +1573,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1618,11 +1621,11 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="jniLibs" />
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="armeabi-v7a" />
+              <option name="myItemId" value="Data" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1634,7 +1637,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -1642,7 +1645,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="device.picker.selection" value="84e9444a" />
+    <property name="device.picker.selection" value="701f8e0b" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/aRSimpleNativeCars/src/main/res/drawable-hdpi" />
@@ -1939,7 +1942,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1960,13 +1963,13 @@
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25189108" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25419846" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905483" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1984,7 +1987,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#4049#4706#0" expanded="true" />
+            <element signature="e#4705#4706#0" expanded="true" />
+            <element signature="e#4825#5486#0" expanded="true" />
+            <element signature="e#5485#5486#0" expanded="true" />
+            <element signature="e#5599#6250#0" expanded="true" />
+            <element signature="e#6249#6250#0" expanded="true" />
+            <element signature="e#6381#7056#0" expanded="true" />
+            <element signature="e#7055#7056#0" expanded="true" />
+            <element signature="e#7226#7227#0" expanded="true" />
+            <element signature="e#7269#7270#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1992,7 +2006,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
-          <folding />
+          <folding>
+            <element signature="e#4049#4706#0" expanded="true" />
+            <element signature="e#4705#4706#0" expanded="true" />
+            <element signature="e#4825#5486#0" expanded="true" />
+            <element signature="e#5485#5486#0" expanded="true" />
+            <element signature="e#5599#6250#0" expanded="true" />
+            <element signature="e#6249#6250#0" expanded="true" />
+            <element signature="e#6381#7056#0" expanded="true" />
+            <element signature="e#7055#7056#0" expanded="true" />
+            <element signature="e#7226#7227#0" expanded="true" />
+            <element signature="e#7269#7270#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2042,7 +2067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.29889297">
           <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2092,9 +2116,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aRSimpleNativeCars/src/main/java/org/artoolkit/ar/samples/ARSimpleNativeCars/ARSimpleNativeCarsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7295082">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.6502732">
+          <caret line="135" column="36" selection-start-line="135" selection-start-column="36" selection-end-line="135" selection-end-column="36" />
+          <folding>
+            <element signature="e#4049#4706#0" expanded="true" />
+            <element signature="e#4705#4706#0" expanded="true" />
+            <element signature="e#4825#5486#0" expanded="true" />
+            <element signature="e#5485#5486#0" expanded="true" />
+            <element signature="e#5599#6250#0" expanded="true" />
+            <element signature="e#6249#6250#0" expanded="true" />
+            <element signature="e#6381#7056#0" expanded="true" />
+            <element signature="e#7055#7056#0" expanded="true" />
+            <element signature="e#7226#7227#0" expanded="true" />
+            <element signature="e#7269#7270#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
