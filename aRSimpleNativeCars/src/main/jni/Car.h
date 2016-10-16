@@ -89,6 +89,8 @@ protected:
 	bool visible;
 };
 
+#define PI 3.141592654f
+
 class Car : public Model{
 public:
 	using Model::Model;
@@ -99,12 +101,13 @@ public:
 	
 	void render(ARdouble* worldOriginMatrix) override
 	{
-		//setVisible(arwQueryMarkerTransformation(model.patternID, model.transformationMatrix));
 		if (visible) {
-			//glLoadMatrixf(model.transformationMatrix);
 			glLoadMatrixf(worldOriginMatrix);
-			//glTranslatef(0.0,20.0,25.0);
 			glTranslatef(offset_x, offset_y, offset_z);
+			
+			// Convert radians to degrees
+			float degrees = (rotation * 180.0f) / PI;
+			glRotatef(degrees, 0.0f, 0.0f, 1.0f);
 
 			glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient
 			);
@@ -124,11 +127,9 @@ public:
 	}
 	
 	void update()
-	{
-		offset_x += translation;
-		offset_z += translation;
-		translation = 0;
-		LOGE("offsets are : %f, %f", offset_x, offset_z);
+	{	
+		offset_x += sin(rotation) * speed;
+		offset_y -= cos(rotation) * speed;
 	}
 	
 	int score()
@@ -141,22 +142,31 @@ public:
 		scoreCounter++;
 	}
 	
-	void rotate(float rot)
+	void setRotation(float rot)
 	{
 		rotation = rot;
 	}
 	
-	void move(float tr)
+	float getRotation()
 	{
-		LOGE("called move");
-		translation += tr;
+		return rotation;
+	}
+	
+	void setSpeed(float speed)
+	{
+		this->speed = speed;
+	}
+	
+	float getSpeed()
+	{
+		return speed;
 	}
 	
 private:
 	
 	int scoreCounter;
 	
-	float rotation;
-	float translation;
+	float rotation = 0;
+	float speed = 0;
 	Vector velocity;
 };
