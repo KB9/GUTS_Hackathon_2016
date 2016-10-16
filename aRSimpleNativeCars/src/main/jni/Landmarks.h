@@ -8,25 +8,51 @@ class Landmark : public Model
 {
 public:
 	
-	Landmark(int order_index, const char* mod, const char* pat) :
-		Model(mod),
+	Landmark(int id, const char* mod, const char* pat, float scaling = 0.035f) :
+		Model(id, mod, scaling),
 		pattern(pat)
 	{	
-		this->order_index = order_index;
 	}
 	
-	bool handleCollision(Car* car)
+	bool handleCollision(Car* car, GameMode mode)
 	{
+		this->mode = mode;
+		if (mode == SINGLE_TIMED){
+			if (!active)
+				return false;
+			
+			// if the score is different from the id of this, it means its not the right landmark next
+			if(id != car->score())
+			{
+				return false;
+			}
+		}
+		
+		if (mode == MULTI_CAPTURE)
+		{
+			//capture the flag. if the car already owns this, do nothing
+			if(car->getID() == owner)
+				return false;
+		}
+		
 		float dstX = std::abs(car->offset_x - offset_x);
 		float dstY = std::abs(car->offset_y - offset_y);
-		float dstZ = std::abs(car->offset_z - offset_z);
+		//float dstZ = std::abs(car->offset_z - offset_z);
 		
-		bool hasHitCheckpoint = (dstX <= DISTANCE_THRESHOLD) && (dstY <= DISTANCE_THRESHOLD) && (dstZ <= DISTANCE_THRESHOLD);
-		LOGE("pleb: %f %f %f %s", dstX, dstY, dstZ, hasHitCheckpoint ? "yas" : "nay");
+		//bool hasHitCheckpoint = (dstX <= DISTANCE_THRESHOLD) && (dstY <= DISTANCE_THRESHOLD) && (dstZ <= DISTANCE_THRESHOLD);
+		bool hasHitCheckpoint = (dstX <= DISTANCE_THRESHOLD) && (dstY <= DISTANCE_THRESHOLD);
+		//LOGE("pleb: %f %f %f %s", dstX, dstY, dstZ, hasHitCheckpoint ? "yas" : "nay");
 		if (hasHitCheckpoint)
 		{
 			car->scored();
-			active = false;
+			owner = car->getID();
+			
+			if(mode == SINGLE_TIMED)
+			{
+				//in single player mode, the landmark is deactivated once it has been triggered
+				active = false;
+			}
+			
 		}
 		
 		return hasHitCheckpoint;
@@ -40,10 +66,19 @@ public:
 			glLoadMatrixf(originMatrix);
 			
 			glTranslatef(offset_x, offset_y, offset_z);
+			const float* ambient = lightAmbient;
 			
-			glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient
+			if (mode == MULTI_CAPTURE) {
+				if (owner == 1)
+				{
+					ambient =ambientPlayer1;
+				}
+				else if(owner == 2)
+					ambient = ambientPlayer2;
+			}
+			glLightfv(GL_LIGHT0, GL_AMBIENT, ambient
 			);
-			glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse
+			glLightfv(GL_LIGHT0, GL_DIFFUSE, ambient
 			);
 			glLightfv(GL_LIGHT0, GL_POSITION, lightPosition
 			);
@@ -93,16 +128,16 @@ public:
 		return pattern.getTransformationMatrix();
 	}
 	
-	int index()
-	{
-		return order_index;
-	}
+	// int index()
+	// {
+		// return order_index;
+	// }
 	
 private:
-	
+	GameMode mode = MULTI_CAPTURE;
 	static constexpr float DISTANCE_THRESHOLD = 100.0f;
 	bool active = true;
 	PatternRef pattern;
 	
-	int order_index;
+	int owner = -1; // the car id who owns this Landmark
 };

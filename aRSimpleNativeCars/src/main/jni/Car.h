@@ -5,8 +5,17 @@
 // extern float lightPosition[4];
 
 constexpr float lightAmbient[4] = {0.1f, 0.1f, 0.1f, 1.0f};
+constexpr float ambientPlayer1[4] = {1.f, 0.1f, 0.1f, 1.0f};
+constexpr float ambientPlayer2[4] = {0.1f, 0.1f, 1.f, 1.0f};
 constexpr float lightDiffuse[4] = {1.0f, 1.0f, 1.0f, 1.0f};
 constexpr float lightPosition[4] = {0.0f, 0.0f, 1.0f, 0.0f};
+
+
+enum GameMode
+{
+	SINGLE_TIMED,
+	MULTI_CAPTURE,
+};
 
 struct Vector
 {
@@ -19,6 +28,11 @@ public:
 	PatternRef (const char* pattern) 
 	{
 		patternID = arwAddMarker(pattern);
+		if (patternID == -1)
+		{
+			LOGE("the pattern is WRONG!!");
+			exit(-1);
+		}
 		arwSetMarkerOptionBool(patternID, ARW_MARKER_OPTION_SQUARE_USE_CONT_POSE_ESTIMATION, false);
 		arwSetMarkerOptionBool(patternID, ARW_MARKER_OPTION_FILTERED, true);
 	}
@@ -41,6 +55,11 @@ private:
 class Model
 {
 public:
+
+	int getID()
+	{
+		return id;
+	}
 	float offset_x = 0, offset_y = 0, offset_z = 0;
 
 	// @param model the full path to the obj file : 
@@ -50,8 +69,10 @@ public:
 	// @param pattern the pattern description. eg 
 	// "single;Data/hiro.patt;80"
 	// "single;Data/kanji.patt;80"
-	Model(const char* modelPath, float scalingFactor = 0.035f) 
+	Model(int id, const char* modelPath, float scalingFactor = 0.035f) 
 	{
+		this->id = id;
+		
 		model = glmReadOBJ2(modelPath, 0, 0); // context 0, don't read textures yet.
 		
 		if (!(model)) {
@@ -87,6 +108,7 @@ public:
 protected:
 	GLMmodel *model;
 	bool visible;
+	int id;
 };
 
 #define PI 3.141592654f
@@ -139,6 +161,7 @@ public:
 	
 	void scored()
 	{
+		LOGE ("you have fucking scored");
 		scoreCounter++;
 	}
 	

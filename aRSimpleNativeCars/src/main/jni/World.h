@@ -21,17 +21,19 @@
 
 class World{
 public:
-	enum GameType
-	{
-		
-	};
-	World(const char* pat):
-		pattern(pat){}
+
+	World(const char* pat, GameMode mode):
+		pattern(pat),
+		mode(mode){}
 	void init()
 	{
-		cars.emplace_back(new Car("Data/models/Ferrari_Modena_Spider.obj"));
-		cars.emplace_back(new Car("Data/models/Porsche_911_GT3.obj"));
-		landmarks.emplace_back(new Landmark(0, "Data/models/Porsche_911_GT3.obj", "single;Data/hiro.patt;80"));
+		cars.emplace_back(new Car(1, "Data/models/Ferrari_Modena_Spider.obj"));
+		//cars.emplace_back(new Car(2, "Data/models/Ferrari_Modena_Spider.obj"));
+		landmarks.emplace_back(new Landmark(0, "Data/models/Porsche_911_GT3.obj", "single;Data/a.patt;40"));
+		landmarks.emplace_back(new Landmark(1, "Data/models/Porsche_911_GT3.obj", "single;Data/b.patt;40"));
+		landmarks.emplace_back(new Landmark(2, "Data/models/Porsche_911_GT3.obj", "single;Data/c.patt;40"));
+		landmarks.emplace_back(new Landmark(3, "Data/models/Porsche_911_GT3.obj", "single;Data/f.patt;40"));
+		landmarks.emplace_back(new Landmark(4, "Data/models/Porsche_911_GT3.obj", "single;Data/g.patt;40"));
 	}
 	
 	void execute()
@@ -53,7 +55,9 @@ public:
 		
 		// first, update all the transformation matrices
 		bool visible = arwQueryMarkerTransformation(pattern.getID(), pattern.getTransformationMatrix());
-		landmarks[0]->update();
+		
+		for (auto* landmark : landmarks)
+			landmark->update();
 		
 		
 		
@@ -61,32 +65,33 @@ public:
 		LOGE("visible : %d", visible);
 		
 		if (!visible) return;
+		
 		float x = 0, y = 0, z = 0;
 		
 		
-		
-		bool success = calculateDistance(landmarks[0], &x, &y, &z);
-		
-		
-		
-		if (success)
-		{
-			landmarks[0]->setOffset(x, y, z);
-			// first update everything
-			//FIXME
+		for (auto* landmark : landmarks){
+			bool success = calculateDistance(landmark, &x, &y, &z);
 			
-			landmarks[0]->render(matrix);
-			
-			// check for collisions
-			// for (Car* car : cars)
-			// {
-				// //END
-				// int score = car->score();
-				// if (landmarks[0]->handleCollision(car))
+			// if the distance is not a fuckup, we can proceed drawing the landmark
+			if (success)
+			{
+				landmark->setOffset(x, y, z);
+				// first update everything
+				//FIXME
+				
+				landmark->render(matrix);
+				
+				// check for collisions
+				// for (Car* car : cars)
 				// {
+					// //END
+					// int score = car->score();
+					// if (landmarks[0]->handleCollision(car))
+					// {
+					// }
 				// }
-			// }
-			landmarks[0]->handleCollision(cars[0]);
+				landmark->handleCollision(cars[0], mode);
+			}
 		}
 		
 		//render everything
@@ -154,6 +159,7 @@ private:
 	float lightPosition[4] = {0.0f, 0.0f, 1.0f, 0.0f};
 	std::vector<Car*> cars;
 	std::vector<Landmark*> landmarks;
+	GameMode mode;
 };
 
 
