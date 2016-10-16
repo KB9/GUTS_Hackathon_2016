@@ -80,6 +80,11 @@
   jni/glm/gtc/quaternion.inl jni/glm/gtc/quaternion_simd.inl \
   C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\cstring \
   jni/glm/gtc/type_ptr.inl jni/Landmarks.h \
+  C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\chrono \
+  C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\ctime \
+  C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/../../android/support/include\time.h \
+  C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\ratio \
+  C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\__undef_min_max \
   C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\vector \
   C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\iosfwd \
   C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\wchar.h \
@@ -101,7 +106,6 @@
   C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\tuple \
   C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\stdexcept \
   C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\atomic \
-  C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\__undef_min_max \
   C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\__split_buffer
 
 jni/../../../../../../android/../include\AR/gsub_es.h:
@@ -362,6 +366,16 @@ jni/glm/gtc/type_ptr.inl:
 
 jni/Landmarks.h:
 
+C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\chrono:
+
+C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\ctime:
+
+C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/../../android/support/include\time.h:
+
+C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\ratio:
+
+C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\__undef_min_max:
+
 C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\vector:
 
 C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\iosfwd:
@@ -403,7 +417,5 @@ C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-st
 C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\stdexcept:
 
 C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\atomic:
-
-C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\__undef_min_max:
 
 C:/Users/bruno_000/AppData/Local/Android/sdk/ndk-bundle/build//../sources/cxx-stl/llvm-libc++/include\__split_buffer:

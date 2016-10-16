@@ -99,7 +99,7 @@ JNIFUNCTION_DEMO(demoDrawFrame(JNIEnv * env, jobject
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoInitialise(JNIEnv * env, jobject
                          object)) {
-	world = new World {"single;Data/d.patt;40", MULTI_CAPTURE};
+	world = new World {"single;Data/d.patt;40", SINGLE_CAPTURE};
 	world->init();
 }
 
