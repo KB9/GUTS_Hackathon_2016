@@ -101,9 +101,9 @@ public:
 			car->render(pattern.getTransformationMatrix());
 		}
 		
-		//if (checkForVictory())
+		if (checkForVictory())
 		{
-			// IMA CALL MY JAVA SISTAH
+			LOGE("IMA CALL MY JAVA SISTAH");
 		}
 		
 	}

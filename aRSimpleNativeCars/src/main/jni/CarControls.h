@@ -9,6 +9,10 @@
 #include <android/log.h>
 
 #include "Car.h"
+#include "World.h"
+
+
+GameMode gmode;
 
 #define JNIFUNCTION_ACTIVITY(sig) Java_org_artoolkit_ar_samples_ARSimpleNativeCars_ARSimpleNativeCarsActivity_##sig
 
@@ -83,13 +87,13 @@ JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onBrakeUp(JNIEnv* env, jobject objec
 // Initialize checkpoints mode
 JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCheckpoints(JNIEnv* env, jobject object))
 {
-	// Bruno start typing here you porco dio puttana troia farfalla
+	gmode = SINGLE_TIMED;
 }
 
 // Initialize CTF mode
 JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCTF(JNIEnv* env, jobject object))
 {
-	// Bruno please see above at your earliest convenience
+	gmode = SINGLE_CAPTURE;
 }
 
 #define SPEED_INCREMENT 0.5f
