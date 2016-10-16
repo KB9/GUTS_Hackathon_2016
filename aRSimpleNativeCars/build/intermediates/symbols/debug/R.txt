@@ -11,9 +11,10 @@ int drawable steer_right 0x7f020005
 int id accelerator_image 0x7f080003
 int id brake_image 0x7f080002
 int id mainLayout 0x7f080001
-int id settings 0x7f080006
+int id settings 0x7f080007
 int id steer_left_image 0x7f080004
 int id steer_right_image 0x7f080005
+int id timer_text 0x7f080006
 int id topLayout 0x7f080000
 int layout main 0x7f030000
 int menu options 0x7f070000

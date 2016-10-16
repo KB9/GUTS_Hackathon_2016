@@ -101,7 +101,7 @@ public:
 			car->render(pattern.getTransformationMatrix());
 		}
 		
-		if (checkForVictory())
+		//if (checkForVictory())
 		{
 			// IMA CALL MY JAVA SISTAH
 		}
@@ -129,10 +129,12 @@ public:
 		}
 		
 		
-		if (money == SINGLE_TIMED)
+		if (mode == SINGLE_TIMED)
 		{
 			return landmarks.back()->isActive();
 		}
+		
+		return false;
 	}
 	
 	bool calculateDistance(Landmark* mark, float* x, float*y, float* z)
