@@ -65,6 +65,7 @@
 
 World *world = nullptr;
 
+
 extern "C" {
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoInitialise(JNIEnv * env, jobject
@@ -99,8 +100,11 @@ JNIFUNCTION_DEMO(demoDrawFrame(JNIEnv * env, jobject
 JNIEXPORT void JNICALL
 JNIFUNCTION_DEMO(demoInitialise(JNIEnv * env, jobject
                          object)) {
-	world = new World {"single;Data/d.patt;40", gmode};
-	world->init();
+	if (!world)
+		world = new World {"single;Data/d.patt;40"};
+	
+	LOGE(" I was just kidding %d", gmode);
+	world->init(gmode);
 }
 
 JNIEXPORT void JNICALL
