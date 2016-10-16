@@ -11,8 +11,7 @@
 #include "Car.h"
 #include "World.h"
 
-
-GameMode gmode;
+World *world = nullptr;
 
 #define JNIFUNCTION_ACTIVITY(sig) Java_org_artoolkit_ar_samples_ARSimpleNativeCars_ARSimpleNativeCarsActivity_##sig
 
@@ -87,13 +86,20 @@ JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(onBrakeUp(JNIEnv* env, jobject objec
 // Initialize checkpoints mode
 JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCheckpoints(JNIEnv* env, jobject object))
 {
-	gmode = SINGLE_TIMED;
+	if (!world)
+		world = new World("single;Data/d.patt;40");
+	
+	world->init(SINGLE_TIMED);
+
 }
 
 // Initialize CTF mode
 JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCTF(JNIEnv* env, jobject object))
 {
-	gmode = SINGLE_CAPTURE;
+	if (!world)
+		world = new World("single;Data/d.patt;40");
+	
+	world->init(SINGLE_CAPTURE);
 }
 
 #define SPEED_INCREMENT 0.5f

@@ -22,11 +22,16 @@
 class World{
 public:
 
-	World(const char* pat, GameMode mode):
-		pattern(pat),
-		mode(mode){}
-	void init()
+	World(const char* pat):
+		pattern(pat){}
+	void init(GameMode mode)
 	{
+		this->mode = mode;
+		clearCars();
+		
+		cars.clear();
+		landmarks.clear();
+		
 		cars.emplace_back(new Car(1, "Data/models/Ferrari_Modena_Spider.obj", 0.016));
 		//cars.emplace_back(new Car(2, "Data/models/Ferrari_Modena_Spider.obj"));
 		landmarks.emplace_back(new Landmark(0, "Data/models/cylinder.obj", "single;Data/a.patt;40", 1.2));
