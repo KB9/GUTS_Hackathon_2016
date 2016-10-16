@@ -14,7 +14,7 @@ constexpr float lightPosition[4] = {0.0f, 0.0f, 1.0f, 0.0f};
 enum GameMode
 {
 	SINGLE_TIMED,
-	MULTI_CAPTURE,
+	SINGLE_CAPTURE,
 };
 
 struct Vector

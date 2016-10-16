@@ -27,13 +27,13 @@ public:
 		mode(mode){}
 	void init()
 	{
-		cars.emplace_back(new Car(1, "Data/models/Ferrari_Modena_Spider.obj"));
+		cars.emplace_back(new Car(1, "Data/models/Ferrari_Modena_Spider.obj", 0.016));
 		//cars.emplace_back(new Car(2, "Data/models/Ferrari_Modena_Spider.obj"));
-		landmarks.emplace_back(new Landmark(0, "Data/models/Porsche_911_GT3.obj", "single;Data/a.patt;40"));
-		landmarks.emplace_back(new Landmark(1, "Data/models/Porsche_911_GT3.obj", "single;Data/b.patt;40"));
-		landmarks.emplace_back(new Landmark(2, "Data/models/Porsche_911_GT3.obj", "single;Data/c.patt;40"));
-		landmarks.emplace_back(new Landmark(3, "Data/models/Porsche_911_GT3.obj", "single;Data/f.patt;40"));
-		landmarks.emplace_back(new Landmark(4, "Data/models/Porsche_911_GT3.obj", "single;Data/g.patt;40"));
+		landmarks.emplace_back(new Landmark(0, "Data/models/cylinder.obj", "single;Data/a.patt;40", 1.2));
+		landmarks.emplace_back(new Landmark(1, "Data/models/cylinder.obj", "single;Data/b.patt;40", 1.2));
+		landmarks.emplace_back(new Landmark(2, "Data/models/cylinder.obj", "single;Data/c.patt;40", 1.2));
+		landmarks.emplace_back(new Landmark(3, "Data/models/cylinder.obj", "single;Data/f.patt;40", 1.2));
+		landmarks.emplace_back(new Landmark(4, "Data/models/cylinder.obj", "single;Data/g.patt;40", 1.2));
 	}
 	
 	void execute()
@@ -101,10 +101,38 @@ public:
 			car->render(pattern.getTransformationMatrix());
 		}
 		
+		if (checkForVictory())
+		{
+			// IMA CALL MY JAVA SISTAH
+		}
+		
 	}
 	
 	int patternID() const{
 		return pattern.getID();
+	}
+	
+	bool checkForVictory()
+	{
+		if (mode == SINGLE_CAPTURE)
+		{
+			
+			for (auto* landmark : landmarks)
+			{
+				if (landmark->whosMyDaddy() != getPlayerCar()->getID())
+				{
+					return false;
+				}
+			}
+			
+			return true;
+		}
+		
+		
+		if (money == SINGLE_TIMED)
+		{
+			return landmarks.back()->isActive();
+		}
 	}
 	
 	bool calculateDistance(Landmark* mark, float* x, float*y, float* z)

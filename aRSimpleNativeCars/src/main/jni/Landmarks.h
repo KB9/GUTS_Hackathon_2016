@@ -2,7 +2,7 @@
 
 #include "Car.h"
 #include <cmath>
-
+#include<chrono>
 
 class Landmark : public Model
 {
@@ -28,7 +28,7 @@ public:
 			}
 		}
 		
-		if (mode == MULTI_CAPTURE)
+		if (mode == SINGLE_CAPTURE)
 		{
 			//capture the flag. if the car already owns this, do nothing
 			if(car->getID() == owner)
@@ -49,9 +49,11 @@ public:
 			
 			if(mode == SINGLE_TIMED)
 			{
+				
 				//in single player mode, the landmark is deactivated once it has been triggered
 				active = false;
 			}
+			start = std::chrono::high_resolution_clock::now();
 			
 		}
 		
@@ -68,7 +70,11 @@ public:
 			glTranslatef(offset_x, offset_y, offset_z);
 			const float* ambient = lightAmbient;
 			
-			if (mode == MULTI_CAPTURE) {
+			if (mode == SINGLE_CAPTURE) {
+				if (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now() - start).count() > 3)
+				{
+					owner = -1;
+				}
 				if (owner == 1)
 				{
 					ambient =ambientPlayer1;
@@ -76,6 +82,7 @@ public:
 				else if(owner == 2)
 					ambient = ambientPlayer2;
 			}
+			
 			glLightfv(GL_LIGHT0, GL_AMBIENT, ambient
 			);
 			glLightfv(GL_LIGHT0, GL_DIFFUSE, ambient
@@ -91,6 +98,16 @@ public:
 			glmDrawArrays(model, 0);
 			LOGE("LOGE draw end");
 		}
+	}
+	
+	int whosMyDaddy() const
+	{
+		return owner;
+	}
+	
+	bool isActive() const 
+	{
+		return active;
 	}
 	
 	void update()
@@ -134,10 +151,11 @@ public:
 	// }
 	
 private:
-	GameMode mode = MULTI_CAPTURE;
-	static constexpr float DISTANCE_THRESHOLD = 100.0f;
+	GameMode mode = SINGLE_CAPTURE;
+	static constexpr float DISTANCE_THRESHOLD = 50.0f;
 	bool active = true;
 	PatternRef pattern;
+	std::chrono::high_resolution_clock::time_point start;
 	
 	int owner = -1; // the car id who owns this Landmark
 };
