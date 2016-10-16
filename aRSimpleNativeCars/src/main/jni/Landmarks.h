@@ -3,13 +3,14 @@
 #include "Car.h"
 #include <cmath>
 
+
 class Landmark : public Model
 {
 public:
 	
-	Landmark(int order_index) :
-		Model(LANDMARK_MODEL_PATH)//,
-		//pattern(LANDMARK_PATTERN_PATHS[order_index])
+	Landmark(int order_index, const char* mod, const char* pat) :
+		Model(mod),
+		pattern(pat)
 	{	
 		this->order_index = order_index;
 	}
@@ -25,8 +26,10 @@ public:
 	{
 		if (visible)
 		{
+			LOGE("offset for the marker are %f %f, %f", offset_x, offset_y, offset_z);
 			glLoadMatrixf(originMatrix);
-			// glTranslatef(offset_x, offset_y, offset_z);
+			
+			//glTranslatef(offset_x, offset_y, offset_z);
 			
 			glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient
 			);
@@ -44,6 +47,23 @@ public:
 			LOGE("LOGE draw end");
 		}
 	}
+	// @param x,y,z coords of the root
+	void update (float x, float y, float z)
+	{
+		// get the transformation matrix and check if visible
+		visible = arwQueryMarkerTransformation(pattern.getID(), pattern.getTransformationMatrix());
+		
+		float* matrix = pattern.getTransformationMatrix();
+		float marker_x = matrix[3];
+		float marker_y = matrix[6];
+		float marker_z = matrix[9];
+		
+		static constexpr int wtf = 1;
+		offset_x = (x - marker_x) * wtf;
+		offset_y = (y - marker_y) * wtf;
+		offset_z = (z - marker_z) * wtf;
+		
+	}
 	
 	int index()
 	{
@@ -51,15 +71,10 @@ public:
 	}
 	
 private:
-	static constexpr char LANDMARK_MODEL_PATH[] = "Data/models/Porsche_911_GT3.obj";
-	// static constexpr char LANDMARK_PATTERN_PATHS[][] = {
-		// "single;Data/a.patt;80", "single;Data/b.patt;80", "single;Data/c.patt;80",
-		// "single;Data/d.patt;80", "single;Data/f.patt;80", "single;Data/g.patt;80"
-	// };
 	
 	static constexpr float DISTANCE_THRESHOLD = 0.5f;
 
-	//PatternRef pattern;
+	PatternRef pattern;
 	
 	int order_index;
 };

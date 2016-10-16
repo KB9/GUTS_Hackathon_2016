@@ -23,34 +23,44 @@ public:
 	{
 		cars.emplace_back(new Car("Data/models/Ferrari_Modena_Spider.obj"));
 		cars.emplace_back(new Car("Data/models/Porsche_911_GT3.obj"));
+		landmarks.emplace_back(new Landmark(0, "Data/models/Porsche_911_GT3.obj", "single;Data/hiro.patt;80"));
 	}
 	
 	void execute()
 	{
-		// first update everything
+		// initial cleanup
 		
 		LOGE("LOGE  start drawframe");
 		
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_COLOR_BUFFER_BIT
-		| GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Set the projection matrix to that provided by ARToolKit.
+		
 		float proj[16];
 		arwGetProjectionMatrix(proj);
 		glMatrixMode(GL_PROJECTION);
 		glLoadMatrixf(proj);
 		glMatrixMode(GL_MODELVIEW);
-
 		glStateCacheEnableDepthTest();
-
 		glStateCacheEnableLighting();
-
 		glEnable(GL_LIGHT0);
-		LOGE("pattern ID: %d", pattern.getID());
+		
+		// check if the world marker is visible, and set its matrix
 		bool visible = arwQueryMarkerTransformation(pattern.getID(), pattern.getTransformationMatrix());
+		const float* matrix = pattern.getTransformationMatrix();
+		
+		float root_x = matrix[3];
+		float root_y = matrix[6];
+		float root_z = matrix[9];
+		
 		LOGE("visible : %d", visible);
 		
 		if (!visible) return;
+		
+		// first update everything
+		//FIXME
+		landmarks[0]->update(root_x, root_y, root_z);
+		landmarks[0]->render(pattern.getTransformationMatrix());
 		
 		// check for collisions
 		for (Car* car : cars)
