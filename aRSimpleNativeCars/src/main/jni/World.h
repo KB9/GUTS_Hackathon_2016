@@ -137,7 +137,7 @@ public:
 		
 		if (mode == SINGLE_TIMED)
 		{
-			return landmarks.back()->isActive();
+			return !(landmarks.back()->isActive());
 		}
 		
 		return false;
