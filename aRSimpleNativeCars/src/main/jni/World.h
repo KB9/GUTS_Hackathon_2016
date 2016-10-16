@@ -50,8 +50,8 @@ public:
 		const float* matrix = pattern.getTransformationMatrix();
 		
 		float root_x = matrix[3];
-		float root_y = matrix[6];
-		float root_z = matrix[9];
+		float root_y = matrix[7];
+		float root_z = matrix[11];
 		
 		LOGE("visible : %d", visible);
 		
