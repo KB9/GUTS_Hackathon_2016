@@ -6,6 +6,10 @@
 
 #include <AR/gsub_es.h>
 #include <AR/ar.h>
+#include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "glm/mat4x4.hpp"
+
 
 #include "Landmarks.h"
 #include "Car.h"
@@ -49,17 +53,17 @@ public:
 		bool visible = arwQueryMarkerTransformation(pattern.getID(), pattern.getTransformationMatrix());
 		const float* matrix = pattern.getTransformationMatrix();
 		
-		float root_x = matrix[3];
-		float root_y = matrix[7];
-		float root_z = matrix[11];
 		
 		LOGE("visible : %d", visible);
 		
 		if (!visible) return;
+		float x, y, z;
 		
+		
+		calculateDistance(landmarks[0], &x, &y, &z);
 		// first update everything
 		//FIXME
-		landmarks[0]->update(root_x, root_y, root_z);
+		landmarks[0]->update(x, y, z);
 		landmarks[0]->render(pattern.getTransformationMatrix());
 		
 		// check for collisions
@@ -81,6 +85,35 @@ public:
 			car->render(pattern.getTransformationMatrix());
 		}
 		
+	}
+	
+	int patternID() const{
+		return pattern.getID();
+	}
+	
+	void  calculateDistance(Landmark* mark, float* x, float*y, float* z)
+	{
+		float* root_ptr = pattern.getTransformationMatrix();
+		float* mark_ptr = mark->transformationMatrix();
+		
+		if (!root_ptr || !mark_ptr) return;
+		
+		glm::mat4 root_transform = glm::make_mat4(root_ptr);
+		glm::mat4 mark_transform = glm::make_mat4(mark_ptr);
+		
+		glm::mat4 inverted_root = glm::inverse(root_transform);
+		
+		//glm::mat4 root_to_mark = root_transform * mark_transform;
+		glm::mat4 root_to_mark = inverted_root * mark_transform;
+		
+		
+		const float* source = (const float*)glm::value_ptr(root_to_mark);
+		
+		*x = source[12];
+		*y = source[13];
+		*z = source[14];
+		
+		LOGE("the three values of love are %f %f %f", *x, *y, *z);
 	}
 	
 	void clearCars()

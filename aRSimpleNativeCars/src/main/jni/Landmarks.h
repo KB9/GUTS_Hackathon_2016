@@ -29,7 +29,7 @@ public:
 			LOGE("offset for the marker are %f %f, %f", offset_x, offset_y, offset_z);
 			glLoadMatrixf(originMatrix);
 			
-			//glTranslatef(offset_x, offset_y, offset_z);
+			glTranslatef(offset_x, offset_y, offset_z);
 			
 			glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient
 			);
@@ -53,16 +53,29 @@ public:
 		// get the transformation matrix and check if visible
 		visible = arwQueryMarkerTransformation(pattern.getID(), pattern.getTransformationMatrix());
 		
-		float* matrix = pattern.getTransformationMatrix();
-		float marker_x = matrix[3];
-		float marker_y = matrix[7];
-		float marker_z = matrix[11];
+		// float* matrix = pattern.getTransformationMatrix();
+		// float marker_x = matrix[3];
+		// float marker_y = matrix[7];
+		// float marker_z = matrix[11];
 		
-		static constexpr int wtf = 1;
-		offset_x = (x - marker_x) * wtf;
-		offset_y = (y - marker_y) * wtf;
-		offset_z = (z - marker_z) * wtf;
+		// static constexpr int wtf = 1;
+		// offset_x = (x - marker_x) * wtf;
+		// offset_y = (y - marker_y) * wtf;
+		// offset_z = (z - marker_z) * wtf;
 		
+		offset_x = x;
+		offset_y = y;
+		offset_z = z;
+		
+	}
+	
+	int patternID() const{
+		return pattern.getID();
+	}
+	
+	float* transformationMatrix()
+	{
+		return pattern.getTransformationMatrix();
 	}
 	
 	int index()

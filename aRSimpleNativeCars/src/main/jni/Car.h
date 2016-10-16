@@ -23,7 +23,7 @@ public:
 		arwSetMarkerOptionBool(patternID, ARW_MARKER_OPTION_FILTERED, true);
 	}
 	
-	int getID()
+	int getID() const
 	{
 		return patternID;
 	}
