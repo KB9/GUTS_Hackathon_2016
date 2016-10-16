@@ -82,7 +82,7 @@ public:
 		visible = v;
 	}
 	
-	virtual void render(ARdouble* worldOriginMatrix) = 0;
+	virtual void render(const ARdouble* worldOriginMatrix) = 0;
 	
 protected:
 	GLMmodel *model;
@@ -99,7 +99,7 @@ public:
 		velocity = vel;
 	}
 	
-	void render(ARdouble* worldOriginMatrix) override
+	void render(const ARdouble* worldOriginMatrix) override
 	{
 		if (visible) {
 			glLoadMatrixf(worldOriginMatrix);

@@ -38,8 +38,6 @@ public:
 	{
 		// initial cleanup
 		
-		LOGE("LOGE  start drawframe");
-		
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Set the projection matrix to that provided by ARToolKit.
@@ -53,17 +51,18 @@ public:
 		glStateCacheEnableLighting();
 		glEnable(GL_LIGHT0);
 		
-		// check if the world marker is visible, and set its matrix
+		// first, update all the transformation matrices
 		bool visible = arwQueryMarkerTransformation(pattern.getID(), pattern.getTransformationMatrix());
+		landmarks[0]->update();
+		
+		
+		
 		const float* matrix = pattern.getTransformationMatrix();
-		
-		
 		LOGE("visible : %d", visible);
 		
 		if (!visible) return;
 		float x = 0, y = 0, z = 0;
 		
-		landmarks[0]->update();
 		
 		
 		bool success = calculateDistance(landmarks[0], &x, &y, &z);
@@ -76,7 +75,7 @@ public:
 			// first update everything
 			//FIXME
 			
-			landmarks[0]->render(pattern.getTransformationMatrix());
+			landmarks[0]->render(matrix);
 			
 			// check for collisions
 			// for (Car* car : cars)
@@ -120,13 +119,12 @@ public:
 		
 		const float* source = (const float*)glm::value_ptr(root_to_mark);
 		
-		if (source[12] <= 1.0f || source[13] <= 1.0f || source[14] <= 1.0f) return false;
+		if (source[12] <= 1.0f && source[13] <= 1.0f && source[14] <= 1.0f) return false;
 		
 		*x = source[12];
 		*y = source[13];
 		*z = source[14];
-		
-		LOGE("the three values of love are %f %f %f", *x, *y, *z);
+	
 		
 		return true;
 	}

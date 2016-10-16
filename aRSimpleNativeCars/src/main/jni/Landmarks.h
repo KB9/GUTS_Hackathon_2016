@@ -32,7 +32,7 @@ public:
 		return hasHitCheckpoint;
 	}
 	
-	void render(ARdouble* originMatrix)
+	void render(const ARdouble* originMatrix)
 	{
 		if (visible && active)
 		{
