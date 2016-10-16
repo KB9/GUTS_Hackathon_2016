@@ -28,6 +28,8 @@ extern "C" {
 	
 	JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCheckpoints(JNIEnv* env, jobject object));
 	JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCTF(JNIEnv* env, jobject object));
+	
+	JNIEXPORT jboolean JNICALL JNIFUNCTION_ACTIVITY(hasWon(JNIEnv* env, jobject object));
 };
 
 bool steerLeftDown = false;
@@ -101,6 +103,14 @@ JNIEXPORT void JNICALL JNIFUNCTION_ACTIVITY(initCTF(JNIEnv* env, jobject object)
 	extern World* world;
 	gmode = SINGLE_CAPTURE;
 	//world->init(SINGLE_CAPTURE);
+}
+
+JNIEXPORT jboolean JNICALL JNIFUNCTION_ACTIVITY(hasWon(JNIEnv* env, jobject object))
+{
+	extern World* world;
+	if (!world) return false;
+	
+	return world->gameWon();
 }
 
 #define SPEED_INCREMENT 0.5f

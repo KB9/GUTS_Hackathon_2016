@@ -93,6 +93,8 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
 
     private Timer timer = new Timer();
 
+    private boolean hasAlreadyWon = false;
+
     private static final float TRANSPARENCY = 0.5f;
 
     private Handler handler = new Handler();
@@ -102,11 +104,17 @@ public class ARSimpleNativeCarsActivity extends ARActivity {
             TextView timerText = (TextView) findViewById(R.id.timer_text);
             timerText.setText(timer.toString());
 
-            if (ARSimpleNativeCarsActivity.hasWon()) {
-                Log.i("WINNER", "winner winner chicken dinner");
+            if (ARSimpleNativeCarsActivity.hasWon() && !hasAlreadyWon) {
+                ((TextView)findViewById(R.id.winner_text)).setVisibility(View.VISIBLE);
+
+                TextView winnerTimeText = (TextView) findViewById(R.id.winner_time_text);
+                winnerTimeText.setText(timer.toString());
+                winnerTimeText.setVisibility(View.VISIBLE);
+
+                hasAlreadyWon = true;
             }
 
-            handler.postDelayed(this, 1000);
+            handler.postDelayed(this, 500);
         }
     };
 
