@@ -61,30 +61,39 @@ public:
 		LOGE("visible : %d", visible);
 		
 		if (!visible) return;
-		float x, y, z;
+		float x = 0, y = 0, z = 0;
+		
+		landmarks[0]->update();
 		
 		
-		calculateDistance(landmarks[0], &x, &y, &z);
-		// first update everything
-		//FIXME
-		landmarks[0]->update(x, y, z);
-		landmarks[0]->render(pattern.getTransformationMatrix());
+		bool success = calculateDistance(landmarks[0], &x, &y, &z);
 		
-		// check for collisions
-		for (Car* car : cars)
+		
+		
+		if (success)
 		{
-			//DOES NOT BELONG HERE
-			car->update();
-			//END
-			int score = car->score();
-			if (handleCollision(landmarks[score]->checkCollision(car))
-			{
-			}
+			landmarks[0]->setOffset(x, y, z);
+			// first update everything
+			//FIXME
+			
+			landmarks[0]->render(pattern.getTransformationMatrix());
+			
+			// check for collisions
+			// for (Car* car : cars)
+			// {
+				// //END
+				// int score = car->score();
+				// if (landmarks[0]->handleCollision(car))
+				// {
+				// }
+			// }
+			landmarks[0]->handleCollision(cars[0]);
 		}
 		
 		//render everything
 		
 		for (auto* car : cars) {
+			car->update();
 			car->render(pattern.getTransformationMatrix());
 		}
 		
@@ -94,12 +103,12 @@ public:
 		return pattern.getID();
 	}
 	
-	void  calculateDistance(Landmark* mark, float* x, float*y, float* z)
+	bool calculateDistance(Landmark* mark, float* x, float*y, float* z)
 	{
 		float* root_ptr = pattern.getTransformationMatrix();
 		float* mark_ptr = mark->transformationMatrix();
 		
-		if (!root_ptr || !mark_ptr) return;
+		if (!root_ptr || !mark_ptr) return false;
 		
 		glm::mat4 root_transform = glm::make_mat4(root_ptr);
 		glm::mat4 mark_transform = glm::make_mat4(mark_ptr);
@@ -109,14 +118,17 @@ public:
 		//glm::mat4 root_to_mark = root_transform * mark_transform;
 		glm::mat4 root_to_mark = inverted_root * mark_transform;
 		
-		
 		const float* source = (const float*)glm::value_ptr(root_to_mark);
+		
+		if (source[12] <= 1.0f || source[13] <= 1.0f || source[14] <= 1.0f) return false;
 		
 		*x = source[12];
 		*y = source[13];
 		*z = source[14];
 		
 		LOGE("the three values of love are %f %f %f", *x, *y, *z);
+		
+		return true;
 	}
 	
 	void clearCars()

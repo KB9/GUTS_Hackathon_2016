@@ -21,11 +21,12 @@ public:
 		float dstY = std::abs(car->offset_y - offset_y);
 		float dstZ = std::abs(car->offset_z - offset_z);
 		
-		bool hasHitCheckpoint = dstX <= DISTANCE_THRESHOLD && dstY <= DISTANCE_THRESHOLD && dstZ <= DISTANCE_THRESHOLD;
+		bool hasHitCheckpoint = (dstX <= DISTANCE_THRESHOLD) && (dstY <= DISTANCE_THRESHOLD) && (dstZ <= DISTANCE_THRESHOLD);
+		LOGE("pleb: %f %f %f %s", dstX, dstY, dstZ, hasHitCheckpoint ? "yas" : "nay");
 		if (hasHitCheckpoint)
 		{
 			car->scored();
-			visible = false;
+			active = false;
 		}
 		
 		return hasHitCheckpoint;
@@ -33,7 +34,7 @@ public:
 	
 	void render(ARdouble* originMatrix)
 	{
-		if (visible)
+		if (visible && active)
 		{
 			LOGE("offset for the marker are %f %f, %f", offset_x, offset_y, offset_z);
 			glLoadMatrixf(originMatrix);
@@ -56,11 +57,16 @@ public:
 			LOGE("LOGE draw end");
 		}
 	}
+	
+	void update()
+	{
+		visible = arwQueryMarkerTransformation(pattern.getID(), pattern.getTransformationMatrix());
+	}
 	// @param x,y,z coords of the root
-	void update (float x, float y, float z)
+	void setOffset (float x, float y, float z)
 	{
 		// get the transformation matrix and check if visible
-		visible = arwQueryMarkerTransformation(pattern.getID(), pattern.getTransformationMatrix());
+		
 		
 		// float* matrix = pattern.getTransformationMatrix();
 		// float marker_x = matrix[3];
@@ -94,8 +100,8 @@ public:
 	
 private:
 	
-	static constexpr float DISTANCE_THRESHOLD = 50.0f;
-
+	static constexpr float DISTANCE_THRESHOLD = 100.0f;
+	bool active = true;
 	PatternRef pattern;
 	
 	int order_index;
